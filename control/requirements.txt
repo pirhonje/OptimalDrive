@@ -1,0 +1,4 @@
+asyncio
+canopen
+websockets
+ruamel.yaml

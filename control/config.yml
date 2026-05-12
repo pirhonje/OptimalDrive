@@ -1,0 +1,39 @@
+name: test_config
+
+can:
+  interface: socketcan
+  channel: can0
+  bitrate: 500000
+  # Give IDs as base 10 integers, not hexadecimal bytes.
+  throttle_id: 32
+  brake_id: 33
+  steering_id: 2
+
+limits:
+  # Actuator target range of motion in mm
+  throttle_max: 80
+  throttle_min: 61
+  # Actuator target range of motion in mm
+  brake_max: 35
+  brake_min: 21
+  # Degrees of steering motor movement
+  steering_max: 180
+  steering_min: -179
+  # Target max velocity and acceleration:
+  steering_v_max: 100000
+  steering_a_max: 100000
+  # Gear reduction
+  steering_n: 20
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DBW Remote</title>
+  <link href="main.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<button type="button" id="cfg-button">Controller Setup</button>
+<button type="button" id="config-button" disabled>Unknown Mode</button> 
+<button type="button" id="disable-button">Enable Control</button>
+<button type="button" id="close-button" onclick="close_window()">Exit UI</button>
+
+<div id="disable-text">Local Controller Disabled</div>
+<div id="container">
+
+  <div id="steering-container" class="gauge-container">
+    <div class="gauge-title">Steering</div>
+      <table class="config-e drive-button-table hidden">
+        <tr>
+          <td><button class="drive-button" id="steering-n90">-90°</button></td>
+          <td><button class="drive-button" id="steering-n10">-10°</button></td>
+          <td><button class="drive-button" id="steering-0">0°</button></td>
+          <td><button class="drive-button" id="steering-p10">10°</button></td>
+          <td><button class="drive-button" id="steering-p90">90°</button></td>
+        </tr>
+      </table>
+    <meter class="main-gauge" id="steering-gauge">Steering</meter>
+    <div class="gauge-values">
+      <div id="steering-min-val" class="gauge-lim">?</div>
+      <div id="steering-val" class="gauge-val">?</div>
+      <div id="steering-max-val" class="gauge-lim">?</div>
+    </div>
+    <div class="config-e limit-set-buttons hidden">
+      <button class="drive-button" id="steering-set-min">Set<br>min</button>
+      <button class="drive-button" id="steering-set-zero">Set<br>0</button>
+      <button class="drive-button" id="steering-set-max">Set<br>max</button>
+    </div>
+    <div class="actuator-states">
+      <div id="steering-nmt">No connection</div>
+      <div id="steering-runstate">State unknown</div>
+    </div>
+  </div>
+
+  <div id="throttle-container" class="gauge-container">
+    <div class="gauge-title">Throttle</div>
+    <table class="config-e drive-button-table hidden">
+      <tr>
+        <td><button class="drive-button" id="throttle-n20">-20<br/>mm</button></td>
+        <td><button class="drive-button" id="throttle-n2">-2<br/>mm</button></td>
+        <td> </td>
+        <td><button class="drive-button" id="throttle-p2">+2<br/>mm</button></td>
+        <td><button class="drive-button" id="throttle-p20">+20<br/>mm</button></td>
+      </tr>
+    </table>
+    <meter class="main-gauge" id="throttle-gauge">Throttle</meter>
+    <div class="gauge-values">
+      <div id="throttle-min-val" class="gauge-lim">?</div>
+      <div id="throttle-val" class="gauge-val">?</div>
+      <div id="throttle-max-val" class="gauge-lim">?</div>
+    </div>
+    <div class="config-e limit-set-buttons hidden">
+      <button class="drive-button" id="throttle-set-min">Set<br>min</button>
+      <button class="drive-button" id="throttle-set-max">Set<br>max</button>
+    </div>
+    <div class="actuator-states">
+      <div id="throttle-nmt">No connection</div>
+      <div id="throttle-runstate">State unknown</div>
+    </div>
+  </div>
+
+  <div id="brake-container" class="gauge-container">
+    <div class="gauge-title">Brake</div>
+    <table class="config-e drive-button-table hidden">
+      <tr>
+        <td><button class="drive-button" id="brake-n20">-20<br/>mm</button></td>
+        <td><button class="drive-button" id="brake-n2">-2<br/>mm</button></td>
+        <td> </td>
+        <td><button class="drive-button" id="brake-p2">+2<br/>mm</button></td>
+        <td><button class="drive-button" id="brake-p20">+20<br/>mm</button></td>
+      </tr>
+    </table>
+    <meter class="main-gauge" id="brake-gauge">Brake</meter>
+    <div class="gauge-values">
+      <div id="brake-min-val" class="gauge-lim">?</div>
+      <div id="brake-val" class="gauge-val">?</div>
+      <div id="brake-max-val" class="gauge-lim">?</div>
+    </div>
+    <div class="config-e limit-set-buttons hidden">
+      <button class="drive-button" id="brake-set-min">Set<br>min</button>
+      <button class="drive-button" id="brake-set-max">Set<br>max</button>
+    </div>
+    <div class="actuator-states">
+      <div id="brake-nmt">No connection</div>
+      <div id="brake-runstate">State unknown</div>
+    </div>
+  </div>
+</div>
+
+<div id="cfg-modal" class="modal-bg">
+  <span id="control-state"></span>
+  <span class="close">&times;</span>
+  <div class="modal-content">
+    <div id="manual-control-container">
+      <div class="manual-control" id="steering-controls">
+        <table class="manual-control-table">
+          <tr>
+            <th colspan=5>Steering</th>
+          </tr>
+          <tr>
+            <td><button id="steering-n90">-90°</button></td>
+            <td><button id="steering-n10">-10°</button></td>
+            <td><button id="steering-0">0°</button></td>
+            <td><button id="steering-p10">10°</button></td>
+            <td><button id="steering-p90">90°</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="manual-control" id="throttle-controls">
+        <table class="manual-control-table">
+          <tr>
+            <th colspan=5>Throttle</th>
+          </tr>
+          <tr>
+            <td><button id="throttle-n20">-20mm</button></td>
+            <td><button id="throttle-n2">-2mm</button></td>
+            <td> </td>
+            <td><button id="throttle-p2">+2mm</button></td>
+            <td><button id="throttle-p20">+20mm</button></td>
+          </tr>
+          <tr>
+            <td><button id="throttle-stop">Stop</button></td>
+            <td><button id="throttle-clear">Clear</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="manual-control" id="brake-controls">
+        <table class="manual-control-table">
+          <tr>
+            <th colspan=5>Brake</th>
+          </tr>
+          <tr>
+            <td><button id="brake-n20">-20mm</button></td>
+            <td><button id="brake-n2">-2mm</button></td>
+            <td> </td>
+            <td><button id="brake-p2">+2mm</button></td>
+            <td><button id="brake-p20">+20mm</button></td>
+          </tr>
+          <tr style="text-align: center;">
+            <td>Max</td>
+            <td colspan=3>Current</td>
+            <td>Min</td>
+          </tr>
+          <tr>
+            <td><button id="brake-stop">Stop</button></td>
+            <td><button id="brake-clear">Clear</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+<div id="controller-modal" class="modal-bg">
+    <div id="controller-container">
+      <table id="actuator-controls-table">
+        <tr>
+          <th>Actuator</th><th>Controller axis</th><th>Non-linearity</th>
+        </tr>
+        <tr>
+          <td>Steering:</td>
+          <td><select id="steering-selector"></td>
+          <td><input type="range" min="1" max="4" value="2" step="0.2" class="slider" id="steering-gamma"><span id="steering-gamma-val">2.0</span></td>
+        </tr>
+        <tr>
+          <td>Throttle:</td>
+          <td><select id="throttle-selector"></td>
+          <td><input type="range" min="1" max="4" value="2" step="0.2" class="slider" id="throttle-gamma"><span id="throttle-gamma-val">2.0</span></td>
+        </tr>
+        <tr>
+          <td>Brake:</td>
+          <td><select id="brake-selector"></td>
+          <td><input type="range" min="1" max="4" value="2" step="0.2" class="slider" id="brake-gamma"><span id="brake-gamma-val">2.0</span></td>
+        </tr>
+      </table>
+      <br>
+      <span> Local input devices:</span>
+      <span id="start">Press a controller button to connect</span>
+      <div id="controllers"></div>
+    </div>
+</div>
+
+<div id="footer" onclick="address_modal()"><a id="users"></a><a id="ip"></a></div>
+
+<script src="main.js"></script>
+</body>

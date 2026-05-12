@@ -1,0 +1,229 @@
+body {
+  font-family: sans-serif;
+	margin:0;
+	display:flex;
+  flex-direction: column;
+  justify-content: center;
+	height:100vh;
+	align-items:center;
+}
+
+#cfg-button {
+  position: fixed;
+  top: 4em;
+  right: 1em;
+}
+
+#config-button {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+
+#close-button {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+}
+
+#disable-button {
+  position: fixed;
+  top: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#disable-text {
+  position: fixed;
+  top: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  font-size: 2em;
+  text-align: center;
+}
+
+#container {
+  margin: 0 auto;
+  overflow: auto;
+  display: flex;
+  align-self: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.gauge-container {
+  min-width: 13em; 
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gauge-title {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.main-gauge {
+  min-width: 100%; 
+  margin: 0.5em 0;
+}
+
+.gauge-values {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.gauge-val {
+  text-align: center;
+}
+
+.gauge-lim {
+  text-align: center;
+  font-size: small;
+}
+
+.actuator-states {
+  text-align: center;
+  padding-top: 0.5em;
+  max-width: 12em;
+  width:100% !important
+}
+
+.actuator-states > * {
+  width:100% !important
+}
+
+/* Config elements */
+
+.drive-button-table {
+  min-width: 100%;
+  padding-top: 0.2em;
+}
+
+.drive-button {
+  min-height: 3em;
+  min-width: 3em;
+}
+
+.limit-set-buttons {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Controller gui */
+.axes {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Modal stuff */
+.modal-bg {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  /*background-color: rgba(0,0,0,0.75); */
+  box-shadow: inset 0 0 0 2.5em rgba(0,0,0,0.75);;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  display: block;
+  position:absolute;
+  height:auto;
+  inset: 2.5em;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.modal-bg2 {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.75); 
+}
+
+#controller-container {
+  background-color: #fefefe;
+  display: block;
+  position:absolute;
+  height:auto;
+  inset: 2.5em;
+  padding: 1em;
+}
+
+#actuator-controls-table {
+  min-width: 30em;
+}
+
+th {
+  text-align: left;
+}
+
+/* The Close Button */
+.close {
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: bold;
+  position: fixed;
+  top: 0em;
+  right: 0.2em;
+}
+
+.close:hover,
+.close:focus {
+  color: #aaa;
+  text-decoration: none;
+  cursor: pointer;
+} 
+
+#manual-control-container {
+  display:flex;
+  align-self: center;
+  align-items:flex-start;
+  justify-content: center;
+  gap: 5em;
+}
+
+.manual-control {
+  min-width: 13em !important
+}
+
+.manual-control-table {
+  width: 100%;
+}
+
+#controller-container {
+  float: bottom;
+}
+
+
+#footer {
+  position: fixed;
+  bottom: 1em;
+  font-size: 0.75em;
+  width: 100%;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}

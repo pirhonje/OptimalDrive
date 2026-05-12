@@ -1,0 +1,18 @@
+services:
+
+  control:
+    build: 
+      context: ./control
+      network: host
+    network_mode: host
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DEVELOPMENT=false # set to true for development (enables hotreloading and disables CAN)
+    volumes: # Only needed for development hotreloading
+      - ./control:/source
+
+  web:
+    build: ./web
+    ports:
+      - "80:80"
+    
