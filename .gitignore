@@ -1,0 +1,16 @@
+# macOS resource forks and metadata
+.DS_Store
+._*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# JetBrains IDE
+.idea/
+
+# Review docs (not source code)
+DBW_overview.txt
+CAN_DISABLE_changes.txt
