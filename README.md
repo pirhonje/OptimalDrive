@@ -18,21 +18,20 @@ This repository contains the software for the OptimalDrive drive-by-wire retrofi
 
 ## Running
 
-**Production** (with CAN hardware connected):
+Before running, open `docker-compose.yml` and set the `DEVELOPMENT` variable:
+
+- `DEVELOPMENT=true` — no CAN hardware required, hot reload enabled (default)
+- `DEVELOPMENT=false` — requires CAN hardware connected
+
+Then run:
 
     docker compose up --build
-
-**Development** (no CAN hardware, enables hot reload):
-
-    DEVELOPMENT=true docker compose up --build
 
 Then open http://localhost in a browser.
 
 To stop:
 
     Ctrl+C
-
----
 
 ## DEVELOPMENT flag
 

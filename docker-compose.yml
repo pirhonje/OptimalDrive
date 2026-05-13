@@ -7,7 +7,7 @@ services:
     network_mode: host
     environment:
       - PYTHONUNBUFFERED=1
-      - DEVELOPMENT=${DEVELOPMENT:-false} # set to true for development (enables hotreloading and disables CAN)
+      - DEVELOPMENT=${DEVELOPMENT:-true} # set to true for development (enables hotreloading and disables CAN)
     volumes: # Only needed for development hotreloading
       - ./control:/source
 
