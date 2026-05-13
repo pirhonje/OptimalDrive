@@ -57,3 +57,6 @@ Note: The path inside DBW_start.sh is hardcoded to /home/optimaldrive/buildtest/
 
 The system exposes a WebSocket interface that can be used to control the actuators from any external software, such as a ROS 2 node. Two example ROS 2 nodes are provided in this repository for reference purposes only. These examples demonstrate how to interface with the system but are not intended as production-ready implementations. Users are responsible for ensuring that their own control software is correctly configured, tested, and safe before use with the vehicle.
 
+
+The example ROS 2 node ros2websocket is based on the package by TZECHIN6, available at https://github.com/TZECHIN6/ros2websocket
+
