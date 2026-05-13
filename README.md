@@ -2,6 +2,8 @@
 
 This repository contains the software for the OptimalDrive drive-by-wire retrofit kit, developed at Aalto University. OptimalDrive is a modular, open-source system enabling remote control, semi-autonomous, and fully autonomous operation in virtually any vehicle with an automatic gearbox. The system provides electronic control of throttle, brake, and steering actuators over a CANopen bus, with a Python backend and browser-based frontend for calibration, control, and monitoring.
 
+[!WARNING]
+Always ensure the emergency stop is functional and a safety driver is present before operating the vehicle with any control source.
 
 <div align="center">
   <img src="drive.gif" alt="Demo">
@@ -56,4 +58,3 @@ Note: The path inside DBW_start.sh is hardcoded to /home/optimaldrive/buildtest/
 
 The system exposes a WebSocket interface that can be used to control the actuators from any external software, such as a ROS 2 node. Two example ROS 2 nodes are provided in this repository for reference purposes only. These examples demonstrate how to interface with the system but are not intended as production-ready implementations. Users are responsible for ensuring that their own control software is correctly configured, tested, and safe before use with the vehicle.
 
-Warning: Always ensure the emergency stop is functional and a safety driver is present before operating the vehicle with any external control source.
