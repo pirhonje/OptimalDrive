@@ -8,7 +8,7 @@ This repo is to implement the WebSocket client as a ROS2 node.
 
 ## Usage
 This package includes both websocket sender and receiver nodes. A launch file is prepared for launching both nodes. 
-You could change the websocket server uri by changing the launch arguments. In this example, the websocket server uri is in this format: _ws://{server_ip}:{server_port}/ws/{robot_id}_.
+You could change the websocket server uri by changing the launch arguments. 
 Run below commands to launch the ros2 websocket bridge:
 
 ```

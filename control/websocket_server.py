@@ -100,13 +100,6 @@ async def rx_handler(websocket, v):
                         cb.dsy_set_new_zero(v)
                         print("New Zero Set")
 
-        #if 'control_input' in event:
-        #    if 'throttle' in event['control_input']:
-        #        v.set_control_request(throttle=event['control_input']['throttle'])
-        #    if 'brake' in event['control_input']:
-        #        v.set_control_request(brake=event['control_input']['brake'])
-        #    if 'steering' in event['control_input']:
-        #        v.set_control_request(steering=event['control_input']['steering'])
 
 
 async def tx_handler(websocket, v):

@@ -37,12 +37,6 @@ def control_loop(v):
         time.sleep(0.05)
 
 
-async def update_actuator_states(v):
-    # For getting feedback of the actual actuator state if supported by actuator
-    # read from canbus etc
-    # Not implemented so we'll pretend the actuators always match the requested state.
-    v.throttle, v.brake, v.steering = v.get_control_request()
-
 async def send_control_requests(v):
     throttle_request, brake_request, steering_request = v.get_control_request()
 

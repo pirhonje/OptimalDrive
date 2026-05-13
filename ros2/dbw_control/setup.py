@@ -23,12 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        'dbw_control = dbw_control.dbw_control:main',
         'dbw_steering_validate = dbw_control.steering_validate:main',
-        'dbw_brake_validate = dbw_control.brake_validate:main',
         'dbw_throttle_validate = dbw_control.throttle_validate:main',
-        'dbw_steering_validate_sine = dbw_control.steering_validate_sine:main',
-        'ackermann_to_websocket = dbw_control.ackermann_to_websocket:main',
     	],
     },
 )

@@ -11,6 +11,3 @@ __pycache__/
 # JetBrains IDE
 .idea/
 
-# Review docs (not source code)
-DBW_overview.txt
-CAN_DISABLE_changes.txt

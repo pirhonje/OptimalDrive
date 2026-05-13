@@ -388,21 +388,6 @@ function addgamepad(gamepad) {
   t.appendChild(document.createTextNode("Gamepad: " + gamepad.id));
   d.appendChild(t);
 
-  /* Buttons disabled for now as there's no use for them yet. See also in updateStatus
-  var b = document.createElement("div");
-  b.className = "buttons";
-
-  for (var i=0; i<gamepad.buttons.length; i++) {
-    var e = document.createElement("span");
-    e.className = "button";
-    //e.id = "b" + i;
-    e.innerHTML = i;
-    b.appendChild(e);
-  }
-
-  d.appendChild(b);
-  */
-
   // Create axis display meters
   var a = document.createElement("div");
   a.className = "axes";
@@ -469,8 +454,6 @@ function updateStatus() {
     var controller = controllers[j];
 
     if (ws.readyState == ws.OPEN && !controller_disable) {
-      //ws.send(JSON.stringify({ action: "control_input", id: controller.id, axes: controller.axes, buttons: controller.buttons}));
-      //ws.send(JSON.stringify({"control_input": {'axes': controller.axes, 'buttons': controller.buttons}}));
       ws.send(JSON.stringify({"control_input": {
         'steering': Math.sign(controller.axes[steering_axis]) * Math.pow(Math.abs(controller.axes[steering_axis]), steering_gamma), //Map from -1..1 to 0..1, apply gamma, map back to -1..1
         'throttle': Math.pow(controller.axes[throttle_axis]+1, throttle_gamma)-1, //Map from -1..1 to 0..2, apply gamma, map back to -1..1 
@@ -480,18 +463,7 @@ function updateStatus() {
 
     var d = document.getElementById("controller" + j);
 
-    /* // Buttons disabled for now as there's no use. See also in addgamepad
-    // Loop through buttons and check state
-    var buttons = d.getElementsByClassName("button");
-    for (var i=0; i<controller.buttons.length; i++) {
-      var b = buttons[i];
-      var val = controller.buttons[i];
-      b.className = "button";
-      if (val.pressed) {
-        b.className += " pressed"
-      }
-    }
-    */
+
 
     // Loop through axis and check state
     var axes = d.getElementsByClassName("axis");

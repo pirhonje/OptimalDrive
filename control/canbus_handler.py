@@ -153,7 +153,7 @@ def linak_report_nmt(message, id, v):
         if v.brake_nmt_state != nmt_state:
             v.brake_nmt_state = nmt_state
             print("Brake ", nmt_state)
-#jesse turee 6.10
+
 def linak_init_stop(node):
     node.rpdo[1]['Actuator Command.Position'].raw = 64259 # Stop Actuator
     node.rpdo[1]['Actuator Command.Current'].raw = 251 # Default
@@ -178,16 +178,7 @@ def linak_stop(node):
     node.rpdo[1]['Actuator Command.Position'].raw = 64259 # Stop Actuator
     node.rpdo[1].transmit()
     print("Sent stop")
-# Jesse turaa
-def dsy_init_pp_j(node):
-    node.sdo['Modes of operation'].raw = 1 # Profile Position
-    node.sdo['Profile velocity'].raw = 5#15000*4#120000
-    node.sdo['Profile acceleration'].raw = 5#10000*4#500000
-    node.sdo['Profile deceleration'].raw = 5#10000*4#500000
-    node.sdo['Pos fac.Numerator'].raw = 20#*131072#4000 #4000
-    node.sdo['Pos fac.Feed constant'].raw = 1 #360 #1
-    node.sdo['Polarity'].raw = 1
-# Jesse turaa
+
 
 def dsy_init_pp(node):
     node.sdo['Modes of operation'].raw = 1 # Profile Position
@@ -217,7 +208,7 @@ def dsy_report_nmt(message, v):
 
     if v.steering_nmt_state != "Pre-operational" and new_state == "Pre-operational":
         v.steering_preop_timestamp = now # Set timestamp only when DSY *enters* Preop
-    # Jesse turaa
+    
     if v.steering_nmt_state == "Pre-operational" and (now - v.steering_preop_timestamp > 0.2):
         v.can_steering_node.nmt.state = 'OPERATIONAL'
 
@@ -234,13 +225,11 @@ def dsy_report_status(message, v):
     v.steering_motion_state = new_state
     if message['Position actual value'].raw > -16777216: # Sometimes DSY overflows for a single update
         v.steering_pos = message['Position actual value'].raw 
-# Jesse turaa
+
 def dsy_decode_status(s):
     m1 = 0b0000000001001111  # For init, no fault, fault stop, fault
     m2 = 0b0000000001101111  # For ready, waiting enable, running, quick stop
-    # Lisäsin printit ja laitoin s & m1 sulkeisiin
-    #print("raw m1",m1)
-    #print("raw s", s)
+
     if ((s & m1) == 0):
         print("init, J")
         return "Initialization"
@@ -328,8 +317,6 @@ def dsy_state_machine(v):
 
 
 def dsy_set_new_zero(v):
-    #v.can_steering_node.sdo["Home offset"].raw = v.steering_pos * (3.145/180)
-    #v.can_steering_node.sdo["Home offset"].raw = v.steering_pos
     v.steering_zero_offset = v.steering_pos
 
 
