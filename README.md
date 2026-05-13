@@ -59,3 +59,8 @@ The system exposes a WebSocket interface that can be used to control the actuato
 
 The example ROS 2 node ros2websocket is based on the package by TZECHIN6, available at https://github.com/TZECHIN6/ros2websocket
 
+---
+
+## License 
+
+This project is licensed under the MIT License - see the LICENSE file for details."
