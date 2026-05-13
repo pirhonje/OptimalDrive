@@ -48,7 +48,7 @@ In development mode the backend starts without CAN hardware and the web UI conne
 
 DBW_start.sh is a convenience script used as a desktop shortcut on the target machine. It starts the Docker containers in a terminal and opens the UI in Firefox kiosk mode automatically.
 
-Note: The path inside DBW_start.sh is hardcoded to /home/optimaldrive/buildtest/DBW. Update this to match wherever you clone the repo on the target machine.
+Note: The path inside DBW_start.sh is hardcoded to "path of DBW". Update this to match wherever you clone the repo on the target machine.
 
 ---
 
