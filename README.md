@@ -5,7 +5,9 @@ This repository contains the software for the OptimalDrive drive-by-wire retrofi
 This software is supplementary material for the article:
 > *OptimalDrive: Modular Drive-by-Wire Retrofit Kit* — Pirhonen et al., HardwareX, 2025.
 
-![Demo](drive.gif)
+<div align="center">
+  <img src="drive.gif" alt="Demo">
+</div>
 
 ---
 
